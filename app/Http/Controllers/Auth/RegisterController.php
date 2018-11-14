@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Http\Controllers\HomeController;
+use App\Models\User;
+//use http\Env\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -61,12 +64,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $req)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if (filter_var($req->get('email'), FILTER_VALIDATE_EMAIL)) {
+            return User::create([
+                'name' => $req->get('name'),
+                'email' => $req->get('email'),
+                'password' => (Hash::make('password')),
+            ]);
+        } else {
+            return redirect()->action('HomeController@index');
+        }
     }
 }

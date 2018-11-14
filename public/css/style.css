@@ -1,0 +1,212 @@
+header{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+body h2{
+    color:#54a6b1;
+    text-align: center;
+}
+
+#titlelog{
+    color: #54a6b1;
+    text-align: center;
+}
+
+body h3{
+    color:#54a6b1;
+    text-align: center;
+}
+
+li{
+    display:inline;
+}
+
+form {
+    margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+}
+
+form div + div {
+    margin-top: 1em;
+}
+
+label {
+    display: block;
+    width: auto;
+    text-align: left;
+}
+
+input, textarea {
+    font: 1em sans-serif;
+    width: 90%;
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+
+input:focus, textarea:focus {
+    border-color: #000;
+}
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+}
+
+.button {
+    padding-left: 90px;
+}
+.Projet{
+    padding : 1em;
+    width: 660px;
+    height: 250px;
+    box-sizing: border-box;
+    background-color: #54a6b1;
+    margin: 0 auto;
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    color: white;
+}
+
+.texte{
+    float: right;
+}
+
+.image img {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.image:hover img {
+    -webkit-transform:scale(1.50);
+    -moz-transform:scale(1.50);
+    -ms-transform:scale(1.50);
+    -o-transform:scale(1.50);
+    transform:scale(1.50);
+}
+/* Inutile si on utilise pas des tales */
+.tcart {
+    border: 5px solid #333;
+    cellspacing: 3px;
+}
+
+.tcart thead th {
+    border: 1px solid rgb(190, 190, 190);
+    background-color: orange;
+    padding: 10px;
+}
+
+.tcart tbody td {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+.tcart tfoot td {
+    border: 1px solid rgb(190, 190, 190);
+    background-color: orange;
+    padding: 10px;
+}
+
+/* Page pour le catalogue */
+
+.cath3{
+    margin: 5px 7px 5px;
+    float:left;
+    clear: none;
+    padding: 1em;
+    border: 2px solid #CCC;
+    border-radius: 1em;
+    width: 20%;
+}
+
+.catimg{
+    width: 200px;
+    height: 200px;
+}
+
+h3 {
+    margin: 0 10%
+}
+
+h3 body {
+    background: #fff;
+}
+
+.catbody{
+    background: #EBFCFD;
+}
+.pp{
+    overflow: auto;
+    position: relative;
+    margin: 5px 7px 5px;
+    float: right;
+    clear:none;
+    padding: 1em;
+    border: 2px solid #CCC;
+    border-radius: 1em;
+    width: 60%;
+    margin : 0 15%;
+}
+
+#ppbuy{
+    position: absolute;
+    bottom:0;
+    left: 0;
+    font: 1em sans-serif;
+    width: 40%;
+    margin : 1em;
+}
+#ppdesc{
+    font-size: 1.3em;
+}
+
+.ppimg{
+    width: 40%;
+    float: left;
+    margin: 0 4% 4% 0;
+}
+
+#pptitle{
+    font-size: 2em;
+    text-decoration:underline;
+    color: orange;
+}
+
+
+/* Page pour l'admin : */
+
+#addprod{
+    border-width: 10px;
+}
+
+
+.tadd {
+    border: 5px solid black;
+    cellspacing: 3px;
+    background: white;
+}
+
+.tadd thead th {
+    border: 1px solid rgb(190, 190, 190);
+    background-color: orange;
+    padding: 10px;
+}
+
+.tadd tbody td {
+    border: 1px solid rgb(190, 190, 190);
+    padding: 10px;
+}
+
+.bodyadmin{
+    background: #EBFCFD;
+}
+
+

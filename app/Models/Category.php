@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ class Category extends Model
 
     public function Catalogue()
     {
-        return $this->hasOne('app\Model\Catalogue');
+        return $this->hasOne('app\Models\Catalogue');
     }
 
 }

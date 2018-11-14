@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,10 +10,10 @@ class Cart extends Model
 
     public function Catalogue()
     {
-        return $this->hasOne('app\Model\Catalogue');
+        return $this->hasOne('app\Models\Catalogue');
     }
     public function Users()
     {
-        return $this->hasMany('app\Model\Users');
+        return $this->hasMany('app\Models\User');
     }
 }

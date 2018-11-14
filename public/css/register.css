@@ -1,4 +1,4 @@
-html{
+body{
     background-size:cover;
     background-repeat:no-repeat;
     background-image: url("http://i.imgur.com/tZoGZmZ.jpg");
@@ -15,10 +15,7 @@ html{
     height: 520px;
     background: #01233f;
     color: #E0FFFF;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin: 10% auto 10% auto;
     position: relative;
     box-sizing:border-box;
     padding: 70px 30px;
