@@ -25,4 +25,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::post('/registered', 'Auth\RegisterController@create')->name('registered');
+Route::post('/register', 'Auth\RegisterController@create')->name('register');
+
+Route::group(['prefix' => 'users'], function() {
+    Route::get('/see', 'UserController@see')->name('users_see');
+    Route::get('/index/{users}', 'UserController@index')->name('users_index');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
