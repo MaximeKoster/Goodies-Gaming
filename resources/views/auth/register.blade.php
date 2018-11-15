@@ -2,8 +2,8 @@
 
 @section('content')
     <div id="registerbox">
-        <img src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782" id="logo">
-        <h1>Inscription</h1>
+        <img src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782" id="reglogo">
+        <h1>Register</h1>
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -36,7 +36,7 @@
             <button type="submit" class="btn btn-primary">
                 {{ __('Register') }}
             </button>
-            <a href="#">Déjà Membre ?</a>
+            <a href="/login">Déjà Membre ?</a>
         </form>
     </div>
 @endsection

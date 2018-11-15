@@ -16,10 +16,7 @@ body{
     height: 520px;
     background: #01233f;
     color: #E0FFFF;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin: 5% auto 5% auto;
     position: relative;
     box-sizing:border-box;
     padding: 70px 30px;
@@ -30,20 +27,13 @@ body{
     filter: alpha(opacity=50);
 }
 
-.logo{
+#loginlogo{
     width: 100px;
     height: 100 px;
     position: absolute;
     top: -50px;
     top: -50px;
     left: calc(50% - 50px);
-}
-
-h1{
-    margin: 0;
-    paddin: 0 0 20px;
-    text-align: center;
-    font-size: 22px;
 }
 
 .loginbox p{
@@ -94,3 +84,16 @@ h1{
     color: #8dcaff;
 }
 
+#remember-me{
+    position: relative;
+    float: right;
+}
+
+#remember-me .remember-checkbox{
+    position: absolute;
+    margin-left: 45%;
+}
+
+#remember-me .remember-text {
+    margin-right: 55%;
+}
