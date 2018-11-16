@@ -5,7 +5,7 @@
     {{csrf_field()}}
     <div>
         <label for="prodname">Enter the name of the new product : </label>
-        <input type="text" name="prodname" placeholder="Write here ...">
+        <textarea name="prodname" placeholder="Write here ..."></textarea>
     </div>
     <div>
         <label for="prodprice">Enter the price of the new product : </label>
@@ -21,7 +21,7 @@
     </div>
     <div>
         <label for="prodimage">Enter the url of the image for the product : </label>
-        <input type="text" name="prodimage" placeholder="Write here ...">
+        <textarea name="prodimage" placeholder="Write here ..."></textarea>
     </div>
     <div>
         <label for="prodsub">Click here to upload the new product : </label>
