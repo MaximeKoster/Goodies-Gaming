@@ -27,21 +27,17 @@
                 </span>
             @endif
 
-            <div id="remember-me">
-                <input class="remember-checkbox" type="checkbox" name="remember"
-                       id="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label class="remember-text" for="remember">
-                    {{ __('Remember Me') }}
-                </label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
+            <button type="submit">
                 {{ __('Login') }}
             </button>
 
             <a class="btn btn-link" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
-            </a>
+            </a><br>
+
+            <a class="btn btn-link noaccount" href="{{url("/register")}}">
+                No account ? Register here.
+            </a><br>
         </form>
     </div>
 @endsection

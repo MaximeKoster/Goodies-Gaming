@@ -11,9 +11,9 @@ body{
 }
 
 .loginbox{
-    max-width: 400px;
-    width: 60%;
-    height: 520px;
+    max-width: 60%;
+    width: 30em;
+    height: 26em;
     background: #01233f;
     color: #E0FFFF;
     margin: 5% auto 5% auto;
@@ -27,6 +27,9 @@ body{
     filter: alpha(opacity=50);
 }
 
+.noaccount{
+    padding: 0 0.75rem;
+}
 #loginlogo{
     width: 100px;
     height: 100 px;
@@ -57,7 +60,8 @@ body{
     font-size: 16px;
 }
 
-.loginbox input[type="submit"]{
+.loginbox button[type="submit"]{
+    width:100%;
     border: none;
     outline: none;
     height: 40px;
@@ -67,7 +71,7 @@ body{
     border-radius: 20px;
 }
 
-.loginbox input[type="submit"]:hover{
+.loginbox button[type="submit"]:hover{
     cursor: pointer;
     background: #8dcaff;
     color: #000;

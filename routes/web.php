@@ -35,3 +35,9 @@ Route::group(['prefix' => 'users'], function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', 'AdminController@index')->name('admin');
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::post('/store', 'AdminController@store')->name('store');
+});

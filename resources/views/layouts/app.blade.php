@@ -19,64 +19,79 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/register.css') }}" rel="stylesheet">
-    {{--<link href="{{ asset('css/login.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/header.css') }}" rel="stylesheet">
+
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<nav>
+    <!-- Left Side Of Navbar -->
+    <ul>
+        <div id="header-searchbar">
+            <a id="header-click-logo" href="{{ url('/') }}">
+                <img src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782"
+                     id="headerlogo">
+            </a>
+            <form action="" class="formulaire">
+                <input class="champ" type="text" placeholder="Search..."/>
+                <input class="bouton" type="button" value="🔍"/>
+            </form>
+        </div>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
-                            </li>
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+        <!-- Right Side Of Navbar -->
+        <!-- Authentication Links -->
+        @guest
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+            </li>
+            <li class="nav-item">
+                @if (Route::has('register'))
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
+            </li>
+        @else
+            <div class="listit">
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Catalogue</a>
+                    <div class="dropdown-content">
+                        <a href="#">Goodies</a>
+                        <a href="#">Accessoire</a>
+                        <a href="#">Console</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">{{ Auth::user()->name }}</a>
+                    <div class="dropdown-content">
+                        <a href="#">Mes Informations</a>
+                        <a href="#">Historique Personnel</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Help</a>
+                    <div class="dropdown-content">
+                        <a href="#">Informations</a>
+                        <a href="#">Contacte</a>
+                        <a href="#">F.A.Q</a>
+                        <a href="#">S.A.V</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a class="dropbtn" href="/">Panier</a>
+                </li>
             </div>
-        </nav>
+        @endguest
+    </ul>
+</nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+
+<main class="py-4">
+    @yield('content')
+</main>
 </body>
 </html>

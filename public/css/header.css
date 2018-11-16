@@ -1,5 +1,5 @@
 body {
-    margin : 0;
+    margin: 0;
 }
 
 ul {
@@ -10,17 +10,36 @@ ul {
     background-color: #333;
 }
 
+#header-click-logo {
+    width: 10%;
+}
+
+#headerlogo {
+    width: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
 .listit {
-    float:right;
+    float: right;
+    display: inline-flex;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+#header-searchbar {
+    float: left;
     display: inline-flex;
 }
 
-.searchbar {
-    float:left;
-    display: inline-flex;
+#header-searchbar input[type="text"] {
+    background: white;
+    height: auto;
+    border-bottom: none;
+    width: 20em;
 }
 
-li a, .dropbtn {
+li #headerlogo, .dropbtn {
     display: inline-block;
     color: white;
     text-align: center;
@@ -28,12 +47,13 @@ li a, .dropbtn {
     text-decoration: none;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+li #headerlogo:hover, .dropdown:hover .dropbtn {
     background-color: #8cdaff;
 }
 
 li.dropdown {
     display: inline-block;
+    position:inherit;
 }
 
 .dropdown-content {
@@ -41,9 +61,10 @@ li.dropdown {
     position: absolute;
     background-color: #8cdaff;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -60,15 +81,16 @@ li.dropdown {
     display: block;
 }
 
-#searchbar{
-    position:relative;
+#searchbar {
+    position: relative;
 }
+
 .formulaire {
-    display:flex;
+    display: flex;
 }
 
 .formulaire .champ {
-    margin: 5%;
+    margin: 1em;
 }
 
 .formulaire .bouton {
@@ -83,24 +105,24 @@ e1c3297efa42.png?1541497408407");
         display: flex;
     }
 
-    .searchbar li{
+    #header-searchbar li {
         width: 25vw;
     }
 
     .champ {
-        width:50vw;
+        width: 50vw;
     }
 
     .bouton {
-        width:10vw;
+        width: 10vw;
     }
 
     ul li {
         width: 25vw;
-        margin:auto;
+        margin: auto;
     }
 
-    body{
-        font-size:5vw;
+    body {
+        font-size: 5vw;
     }
 }

@@ -15,10 +15,12 @@ class CreateCatalogueTable extends Migration
     {
         Schema::create('catalogue', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->string('title');
             $table->text('description');
+            $table->integer('price');
             $table->integer('quantity');
+            $table->string('url_image');
             $table->timestamps();
         });
     }
