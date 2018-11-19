@@ -86,8 +86,29 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropbtn" href="/">Cart</a>
-                    <div class="dropdown-content">
-                        <a href="#">oui </a>
+                    <div class="cart-content">
+                        <table class="tcart">
+                            <thead>
+                            <th>Article name</th>
+                            <th>Price</th>
+                            <th>Amount</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Article 1</td>
+                                <td>Price</td>
+                                <td>
+                                    <input type="number" min="1"/> <input class="bouton" type="button" value="🗙"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="2">Total Price :</td>
+                                <td><input type="submit" value="confirm"></td>
+                            </tr>
+                            </tfoot>
+                        </table>
                     </div>
                 </li>
             </div>
