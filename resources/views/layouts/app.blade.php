@@ -42,29 +42,31 @@
         <!-- Right Side Of Navbar -->
         <!-- Authentication Links -->
         @guest
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </li>
-            <li class="nav-item">
-                @if (Route::has('register'))
-                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                @endif
-            </li>
+            <div class="listit">
+                <li class="dropdown">
+                    <a class="guestbutton" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                <li class="dropdown">
+                    @if (Route::has('register'))
+                        <a class="guestbutton" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            </div>
         @else
             <div class="listit">
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Catalogue</a>
                     <div class="dropdown-content">
                         <a href="#">Goodies</a>
-                        <a href="#">Accessoire</a>
-                        <a href="#">Console</a>
+                        <a href="#">Accessories </a>
+                        <a href="#">Consoles</a>
                     </div>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">{{ Auth::user()->name }}</a>
                     <div class="dropdown-content">
-                        <a href="#">Mes Informations</a>
-                        <a href="#">Historique Personnel</a>
+                        <a href="#">My Profile</a>
+                        <a href="#">History</a>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}</a>
@@ -76,20 +78,22 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">Help</a>
                     <div class="dropdown-content">
-                        <a href="#">Informations</a>
-                        <a href="#">Contacte</a>
-                        <a href="#">F.A.Q</a>
+                        <a href="#">Information</a>
+                        <a href="#">Contact</a>
+                        <a href="#">QnA</a>
                         <a href="#">S.A.V</a>
                     </div>
                 </li>
                 <li class="dropdown">
-                    <a class="dropbtn" href="/">Panier</a>
+                    <a class="dropbtn" href="/">Cart</a>
+                    <div class="dropdown-content">
+                        <a href="#">oui </a>
+                    </div>
                 </li>
             </div>
         @endguest
     </ul>
 </nav>
-
 
 <main class="py-4">
     @yield('content')
