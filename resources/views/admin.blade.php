@@ -17,7 +17,7 @@
         </div>
         <div>
             <label for="quantity">Enter the product quantity: </label>
-            <input type="number" name="quantity" placeholder="quantity">
+            <input type="number" name="quantity" placeholder="Write here ...">
         </div>
         <div>
             <label for="prodimage">Enter the url of the image for the product : </label>
@@ -32,23 +32,24 @@
         <thead>
         <th>Image Url</th>
         <th>Article name</th>
-        <th>Price</th>
+        <th>Price ($) </th>
         <th>Description</th>
         <th>Amount left</th>
+        <th>Delete item</th>
         </thead>
         <tbody>
         @foreach($products as $product)
-            <tr>
-                <td>{{ $product->url_image }}</td>
-                <td>{{ $product->title }}</td>
-                <td>{{ $product->price  }}</td>
+            <tr id="admin-list">
+                <td><input type="text" value="{{ $product->url_image }}"></td>
+                <td><input type="text" value="{{ $product->title }}"></td>
+                <td><input type="number" value="{{ $product->price  }}"></td>
                 <td><textarea name="desc" placeholder="Input description here">{{ $product->description }}</textarea></td>
                 <td>{{ $product->quantity }}</td>
+                <td><input class="bouton" type="button" value="🗙"/></td>
             </tr>
         @endforeach
         <tr>
             <td><input type="button" value="Confirm changes"></td>
-            <td><input type="button" value="Modify items"></td>
         </tr>
         </tbody>
     </table>

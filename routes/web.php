@@ -19,9 +19,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomeController@index')->name('home');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -43,3 +40,6 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 Route::get('/catalogue', 'CatalogueController@display')->name('catalogue');
+Route::get('/produit', 'ProduitController@display')->name('produit');
+Route::get('/home', 'CatalogueController@display')->name('home');
+Route::get('/', 'CatalogueController@display')->name('home');

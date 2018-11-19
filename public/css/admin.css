@@ -6,6 +6,8 @@
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
+    margin-bottom: 2%;
+    background-color: white;
 }
 
 #addprod  div + div {
@@ -33,3 +35,7 @@
     background: #EBFCFD;
 }
 
+#admin-list input[type="text"]{
+    color: black;
+    border: 1px solid grey;
+}

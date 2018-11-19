@@ -56,7 +56,7 @@
         @else
             <div class="listit">
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Catalogue</a>
+                    <a href="{{ route('catalogue') }}" class="dropbtn">Catalogue</a>
                     <div class="dropdown-content">
                         <a href="#">Goodies</a>
                         <a href="#">Accessories </a>
