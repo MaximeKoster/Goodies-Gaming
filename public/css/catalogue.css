@@ -9,18 +9,26 @@
 }
 
 .catimg{
-    width: 200px;
-    height: 200px;
-}
-
-h3 {
-    margin: 0 10%
-}
-
-h3 body {
-    background: #fff;
+    width: 100%;
+    height: 100%;
 }
 
 .catbody{
     background: #EBFCFD;
+}
+
+.catalogue-head {
+    margin: 0 10%;
+    font-size: 1.17em;
+    font-weight: bold;
+    color: #54a6b1;
+    text-align: center
+}
+
+.catalogue-button{
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+    margin-bottom: 3%;
 }

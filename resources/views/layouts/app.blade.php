@@ -22,6 +22,7 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/catalogue.css') }}" rel="stylesheet">
 
 </head>
 <body>
