@@ -45,7 +45,7 @@
                 <td><input type="number" value="{{ $product->price  }}"></td>
                 <td><textarea name="desc" placeholder="Input description here">{{ $product->description }}</textarea></td>
                 <td>{{ $product->quantity }}</td>
-                <td><input class="bouton" type="button" value="🗙"/></td>
+                <td><input class="bouton" type="button" value="🗙" onclick="{{('AdminController@delete_id)}}"/></td>
             </tr>
         @endforeach
         <tr>

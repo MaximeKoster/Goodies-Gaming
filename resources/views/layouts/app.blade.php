@@ -23,6 +23,7 @@
     <link href="{{ asset('css/header.css') }}" rel="stylesheet">
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     <link href="{{ asset('css/catalogue.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -120,5 +121,21 @@
 <main class="py-4">
     @yield('content')
 </main>
+
+<footer>
+    <div class="footer">
+        <a class="to-left" id=" textpetit">&copy;Copyright GoodiesGaming By Tom & Maxime</a>
+
+        <a href="{{ url("https://www.facebook.com/") }}" target="_blank"><img id="zoom" class="to-right"
+                                                                              src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/600px-Facebook_logo_%28square%29.png"
+                                                                              height="25" weight="25"></a>
+        <a href="{{ url("https://linkedin.com/") }}" target="_blank"><img id="zoom" class="to-right"
+                                                                          src="https://business.utsa.edu/wp-content/uploads/2018/05/linkedin-logo.png"
+                                                                          height="25" weight="25"></a>
+        <a href="{{ url("https://twitter.com/?lang=en") }}" target="_blank"><img id="zoom" class="to-right"
+                                                                                 src="http://www.kittysanders.com/wp-content/uploads/2014/01/Twitter-Logo-Icon-600x600.png"
+                                                                                 height="25" weight="25"></a>
+    </div>
+</footer>
 </body>
 </html>

@@ -25,4 +25,9 @@ class AdminController extends Controller
         $product->save();
         return redirect()->back();
     }
+
+    public function delete_id()
+    {
+        DB::table('catalogue')->where('id','=','$product->id')->delete();
+    }
 }
