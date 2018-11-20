@@ -38,6 +38,9 @@
         <th>Delete item</th>
         </thead>
         <tbody>
+        <?php
+        use App\Http\Controllers\AdminController;
+        ?>
         @foreach($products as $product)
             <tr id="admin-list">
                 <td><input type="text" value="{{ $product->url_image }}"></td>
@@ -45,7 +48,9 @@
                 <td><input type="number" value="{{ $product->price  }}"></td>
                 <td><textarea name="desc" placeholder="Input description here">{{ $product->description }}</textarea></td>
                 <td>{{ $product->quantity }}</td>
-                <td><input class="bouton" type="button" value="🗙" onclick="{{('AdminController@delete_id)}}"/></td>
+            <form method="POST" action="{{action('AdminController@delete_id')}}">
+                <td><input class="bouton" type="submit" value="🗙"/></td>
+            </form>
             </tr>
         @endforeach
         <tr>

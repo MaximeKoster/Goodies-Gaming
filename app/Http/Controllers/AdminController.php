@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalogue;
+use DemeterChain\C;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,5 +30,8 @@ class AdminController extends Controller
     public function delete_id()
     {
         DB::table('catalogue')->where('id','=','$product->id')->delete();
+        //Catalogue::table('catalogue')->where('id','=','$product->id')->delete();
+        //Catalogue::find($product->id)->delete();
+        echo("ok");
     }
 }
