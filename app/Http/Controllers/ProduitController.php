@@ -14,9 +14,9 @@ class ProduitController extends Controller
         return view('produit');
     }
 
-    public function display(\App\Models\Catalogue $id)
+    public function display($id)
     {
-        $display = \App\Models\Catalogue::find($id)[0];
-        return view('catalogue', ['display' => $display]);
+        $display = DB::select("SELECT * FROM catalogue WHERE id = $id");
+        return view('produit', ['display' => $display]);
     }
 }

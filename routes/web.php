@@ -38,9 +38,15 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::group(['prefix' => 'admin'], function() {
     Route::post('/store', 'AdminController@store')->name('store');
     Route::post('/', 'AdminController@delete_id')->name('delete_id');
+    Route::post('/storecat', 'AdminController@store_category')->name('storecat');
+
 });
 
 Route::get('/catalogue', 'CatalogueController@display')->name('catalogue');
-Route::get('/produit', 'ProduitController@display')->name('produit');
+
+Route::get('/produit/{id}', 'ProduitController@display')->name('produit');
+
 Route::get('/home', 'CatalogueController@display')->name('home');
+
 Route::get('/', 'CatalogueController@display')->name('home');
+

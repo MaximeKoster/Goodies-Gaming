@@ -39,3 +39,12 @@
     color: black;
     border: 1px solid grey;
 }
+
+#category-creator{
+    bottom: 0px;
+    display:inline-block;
+}
+
+#product-creator{
+    display:inline-block;
+}

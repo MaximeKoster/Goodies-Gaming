@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Catalogue;
+use App\Models\Category;
 use DemeterChain\C;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,11 +28,19 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function delete_id()
+    public function store_category(Request $key)
     {
-        DB::table('catalogue')->where('id','=','$product->id')->delete();
-        //Catalogue::table('catalogue')->where('id','=','$product->id')->delete();
-        //Catalogue::find($product->id)->delete();
-        echo("ok");
+        $category = new Category();
+        $category->name = $key->get('category_name');
+        $category->view_permission = $key->get('category_permission');
+        $category->save();
+        return redirect()->back();
+    }
+
+    public function delete_id(Request $key)
+    {
+        catalogue::select('select * from catalogue')->where('id','=',$key->get('id'))->delete();
+        return redirect()->back();
+
     }
 }

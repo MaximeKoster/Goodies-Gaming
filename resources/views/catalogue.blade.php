@@ -3,13 +3,13 @@
 @section('content')
     @foreach($display as $product)
         <h3 class="catalogue-head">
-        <div class="cath3">
-            <img class="catimg" src="{{$product->url_image}}"/>
-            <p>{{$product->title}}</p>
-            <p>Price : {{$product-> price}}$</p>
-            <input class="catalogue-button" type="submit" value="Page produit"/><br>
-            <input class="catalogue-button" type="submit" value="Achat Direct"/><br>
-        </div>
+            <div class="cath3">
+                <img class="catimg" src="{{$product->url_image}}"/>
+                <p>{{$product->title}}</p>
+                <p>Price : {{$product-> price}}$</p>
+                <button onclick="location.href = 'produit/{{$product->id}}';">Description</button>
+                <button onclick="location.href = '';">Achat Directe</button>
+            </div>
         </h3>
     @endforeach
 @endsection
