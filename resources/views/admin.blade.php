@@ -67,12 +67,10 @@
         <th>Price ($)</th>
         <th>Description</th>
         <th>Amount left</th>
+        <th>Confirm Changes</th>
         <th>Delete item</th>
         </thead>
         <tbody>
-        <?php
-        use App\Http\Controllers\AdminController;
-        ?>
         @foreach($products as $product)
             <tr id="admin-list">
                 <td><input type="text" value="{{ $product->url_image }}"></td>
@@ -81,6 +79,7 @@
                 <td><textarea name="desc" placeholder="Input description here">{{ $product->description }}</textarea>
                 </td>
                 <td>{{ $product->quantity }}</td>
+                <td><input type="button" class="bouton" value="✔"></td>
                 <form method="POST" action="{{action('AdminController@delete_id')}}">
                     {{ csrf_field() }}
                     <input type="hidden" name="id" value="{{ $product->id }}";>
@@ -88,9 +87,6 @@
                 </form>
             </tr>
         @endforeach
-        <tr>
-            <td><input type="button" value="Confirm changes"></td>
-        </tr>
         </tbody>
     </table>
 @endsection

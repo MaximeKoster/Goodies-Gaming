@@ -7,6 +7,7 @@
                 <img class="catimg" src="{{$product->url_image}}"/>
                 <p>{{$product->title}}</p>
                 <p>Price : {{$product-> price}}$</p>
+                <p> Only {{$product->quantity}} left ! Grab yours quickly !</p>
                 <button onclick="location.href = 'produit/{{$product->id}}';">Description</button>
                 <button onclick="location.href = '';">Achat Directe</button>
             </div>
