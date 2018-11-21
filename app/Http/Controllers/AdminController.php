@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function index()
     {
         $products = DB::select('select * from catalogue');
-        return view('admin',['products'=>$products]);
+        return view('admin', ['products' => $products]);
     }
 
     public function store(Request $key)
@@ -39,8 +39,23 @@ class AdminController extends Controller
 
     public function delete_id(Request $key)
     {
-        catalogue::select('select * from catalogue')->where('id','=',$key->get('id'))->delete();
+        catalogue::select('select * from catalogue')->where('id', '=', $key->get('id'))->delete();
         return redirect()->back();
 
+    }
+
+    public function update_id(Request $key)
+    {
+
+        $product = Catalogue::find($key->get('id'));
+
+        $product->title = $key->get('update_title');
+        $product->price = $key->get('update_price');
+        $product->description = $key->get('update_desc');
+        $product->quantity = $key->get('update_quantity');
+        $product->url_image = $key->get('update_img');
+
+        $product->save();
+        return redirect()->back();
     }
 }

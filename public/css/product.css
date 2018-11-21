@@ -9,6 +9,9 @@
     border-radius: 1em;
     width: 60%;
     margin : 0 15%;
+    background: #01233f;
+    opacity: 0.8;
+
 }
 
 #ppbuy{
@@ -22,6 +25,7 @@
 
 #ppdesc{
     font-size: 1.3em;
+    color:white;
 }
 
 .ppimg{

@@ -37,8 +37,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::group(['prefix' => 'admin'], function() {
     Route::post('/store', 'AdminController@store')->name('store');
-    Route::post('/', 'AdminController@delete_id')->name('delete_id');
+    Route::post('/deleted', 'AdminController@delete_id')->name('delete_id');
     Route::post('/storecat', 'AdminController@store_category')->name('storecat');
+    Route::post('/updated', 'AdminController@update_id')->name('update_id');
 
 });
 

@@ -73,16 +73,22 @@
         <tbody>
         @foreach($products as $product)
             <tr id="admin-list">
-                <td><input type="text" value="{{ $product->url_image }}"></td>
-                <td><input type="text" value="{{ $product->title }}"></td>
-                <td><input type="number" value="{{ $product->price  }}"></td>
-                <td><textarea name="desc" placeholder="Input description here">{{ $product->description }}</textarea>
-                </td>
-                <td>{{ $product->quantity }}</td>
-                <td><input type="button" class="bouton" value="✔"></td>
+                <form method="POST" action="{{ action('AdminController@update_id') }}">
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="id" value="{{ $product->id }}" ;>
+                    <td><input type="text" name="update_img" value="{{ $product->url_image }}"></td>
+                    <td><input type="text" name="update_title" value="{{ $product->title }}"></td>
+                    <td><input type="number" name="update_price" value="{{ $product->price  }}"></td>
+                    <td><textarea name="update_desc" placeholder="Input description here">{{ $product->description }}</textarea></td>
+                    <td><input type="number" name="update_quantity" value="{{ $product->quantity }}"></td>
+                    <td><input type="submit" class="bouton" value="✔"></td>
+                </form>
+
                 <form method="POST" action="{{action('AdminController@delete_id')}}">
                     {{ csrf_field() }}
-                    <input type="hidden" name="id" value="{{ $product->id }}";>
+
+                    <input type="hidden" name="id" value="{{ $product->id }}" ;>
                     <td><input class="bouton" type="submit" value="🗙"/></td>
                 </form>
             </tr>
