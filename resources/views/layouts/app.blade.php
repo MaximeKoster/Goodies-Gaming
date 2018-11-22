@@ -71,6 +71,9 @@
                     <div class="dropdown-content">
                         <a href="#">My Profile</a>
                         <a href="#">History</a>
+                        @if(Auth::user()->permissions == "admin")
+                            <a href="{{ route('admin') }}">Admin</a>
+                        @endif
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}</a>

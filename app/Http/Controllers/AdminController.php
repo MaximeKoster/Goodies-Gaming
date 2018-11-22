@@ -49,11 +49,22 @@ class AdminController extends Controller
 
         $product = Catalogue::find($key->get('id'));
 
-        $product->title = $key->get('update_title');
-        $product->price = $key->get('update_price');
-        $product->description = $key->get('update_desc');
-        $product->quantity = $key->get('update_quantity');
-        $product->url_image = $key->get('update_img');
+
+        if($key->get('update_title') != NULL) {
+            $product->title = $key->get('update_title');
+        }
+        if($key->get('update_price') != NULL) {
+            $product->price = $key->get('update_price');
+        }
+        if($key->get('update_desc') != NULL) {
+            $product->description = $key->get('update_desc');
+        }
+        if($key->get('update_quantity') != NULL) {
+            $product->quantity = $key->get('update_quantity');
+        }
+        if($key->get('update_img') != NULL) {
+            $product->url_image = $key->get('update_img');
+        }
 
         $product->save();
         return redirect()->back();
