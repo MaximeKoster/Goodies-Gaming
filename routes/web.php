@@ -43,6 +43,10 @@ Route::group(['prefix' => 'admin'], function() {
 
 });
 
+Route::get('/cart/{user_id}', 'CartController@display_cart')->name('display_cart');
+
+Route::post('/catalogue', 'CartController@create_cart')->name('create_cart');
+
 Route::get('/catalogue', 'CatalogueController@display')->name('catalogue');
 
 Route::get('/produit/{id}', 'ProduitController@display')->name('produit');

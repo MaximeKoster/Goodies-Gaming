@@ -98,7 +98,7 @@
                         <form method="POST" action="{{action('AdminController@delete_id')}}">
                             {{ csrf_field() }}
 
-                            <input type="hidden" name="id" value="{{ $product->id }}" ;>
+                            <input type="hidden" name="id" value="{{ $product->id }}">
                             <td><input class="bouton" type="submit" value="🗙"/></td>
                         </form>
                     </tr>

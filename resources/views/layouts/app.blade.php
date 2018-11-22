@@ -101,13 +101,18 @@
                             <th>Amount</th>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Article 1</td>
-                                <td>Price</td>
-                                <td>
-                                    <input type="number" min="1"/> <input class="bouton" type="button" value="🗙"/>
-                                </td>
-                            </tr>
+                            @foreach($display_cart as $product)
+                                <tr>
+                                    <form method="POST" action="{{ action('CartController@create_cart') }}">
+                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>
+                                            <input type="number" min="1"/>
+                                            <input class="bouton" type="submit" value="✔"/>
+                                        </td>
+                                    </form>
+                                </tr>
+                            @endforeach
                             </tbody>
                             <tfoot>
                             <tr>
