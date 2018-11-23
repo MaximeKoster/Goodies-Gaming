@@ -20,10 +20,11 @@
                 <form method="POST" action="{{ action('CartController@create_cart') }}">
                     {{ csrf_field() }}
 
+                    <input type="hidden" name="pagenameid" value="1">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="product_id" value="{{ $product->title }}">
                     <input type="hidden" name="price" value="{{ $product->price }}">
-                    <button class="catalogue-button" type="submit">Achat Directe</button>
+                    <button class="catalogue-button" onclick="location.href={{ route('cart') }};" type="submit">Achat Directe</button>
                 </form>
             </div>
         </h3>

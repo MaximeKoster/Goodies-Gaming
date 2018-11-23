@@ -27,7 +27,11 @@ class CartController extends Controller
         $cart->item_quantity = 1;
         $cart->save();
 
-        return redirect()->back();
+        if ($key->get('pagenameid') == 1) {
+            return redirect()->route('cart');
+        } else {
+            return redirect()->back();
+        }
     }
 
     public function display_cart()

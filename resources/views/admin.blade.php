@@ -84,7 +84,7 @@
                         <form method="POST" action="{{ action('AdminController@update_id') }}">
                             {{ csrf_field() }}
 
-                            <input type="hidden" name="id" value="{{ $product->id }}" ;>
+                            <input type="hidden" name="id" value="{{ $product->id }}";>
                             <td><input type="text" name="update_img" value="{{ $product->url_image }}"></td>
                             <td><input type="text" name="update_title" value="{{ $product->title }}"></td>
                             <td><input type="number" name="update_price" value="{{ $product->price  }}"></td>
