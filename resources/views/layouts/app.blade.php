@@ -26,6 +26,7 @@
     <link href="{{ asset('css/catalogue.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/product.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/cart.css') }}" rel="stylesheet">
 
 </head>
 <body>
@@ -91,9 +92,9 @@
                         <a href="#">S.A.V</a>
                     </div>
                 </li>
-                <li class="dropdown">
-                    <a class="dropbtn" href="/">Cart</a>
-                    <div class="cart-content">
+               {{-- <li class="dropdown">--}}
+                    <a class="dropbtn" href="/cart">Cart</a>
+                    {{--<div class="cart-content">
                         <table class="tcart">
                             <thead>
                             <th>Article name</th>
@@ -101,18 +102,7 @@
                             <th>Amount</th>
                             </thead>
                             <tbody>
-                            @foreach($display_cart as $product)
-                                <tr>
-                                    <form method="POST" action="{{ action('CartController@create_cart') }}">
-                                        <td>{{ $product->title }}</td>
-                                        <td>{{ $product->price }}</td>
-                                        <td>
-                                            <input type="number" min="1"/>
-                                            <input class="bouton" type="submit" value="✔"/>
-                                        </td>
-                                    </form>
-                                </tr>
-                            @endforeach
+                            @yield('cartheader')
                             </tbody>
                             <tfoot>
                             <tr>
@@ -120,9 +110,9 @@
                                 <td><input type="submit" value="confirm"></td>
                             </tr>
                             </tfoot>
-                        </table>
+                        </table>--}}
                     </div>
-                </li>
+                {{--</li>--}}
             </div>
         @endguest
     </ul>

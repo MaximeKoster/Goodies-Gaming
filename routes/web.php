@@ -43,15 +43,23 @@ Route::group(['prefix' => 'admin'], function() {
 
 });
 
-Route::get('/cart/{user_id}', 'CartController@display_cart')->name('display_cart');
+Route::get('/cart', 'CartController@display_cart')->name('cart');
 
+Route::group(['prefix' => 'cart'], function() {
+    Route::get('/updated', 'CartController@update_quantity')->name('update_quantity');
+    Route::post('/deleted', 'CartController@delete_cart')->name('delete_cart');
+
+});
 Route::post('/catalogue', 'CartController@create_cart')->name('create_cart');
 
 Route::get('/catalogue', 'CatalogueController@display')->name('catalogue');
+/*Route::get('/catalogue', 'CartController@display_cart')->name('display_cart');*/
 
 Route::get('/produit/{id}', 'ProduitController@display')->name('produit');
+/*Route::get('/produit/{id}', 'CartController@display_cart')->name('display_cart');*/
 
 Route::get('/home', 'CatalogueController@display')->name('home');
 
 Route::get('/', 'CatalogueController@display')->name('home');
+/*Route::get('/', 'CartController@display_cart')->name('display_cart');*/
 
