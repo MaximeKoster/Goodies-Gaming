@@ -61,11 +61,6 @@
             <div class="listit">
                 <li class="dropdown">
                     <a href="{{ route('catalogue') }}" class="dropbtn">Catalogue</a>
-                    <div class="dropdown-content">
-                        <a href="#">Goodies</a>
-                        <a href="#">Accessories </a>
-                        <a href="#">Consoles</a>
-                    </div>
                 </li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">{{ Auth::user()->name }}</a>
@@ -92,27 +87,33 @@
                         <a href="#">S.A.V</a>
                     </div>
                 </li>
-               {{-- <li class="dropdown">--}}
-                    <a class="dropbtn" href="/cart">Cart</a>
-                    {{--<div class="cart-content">
-                        <table class="tcart">
-                            <thead>
-                            <th>Article name</th>
-                            <th>Price</th>
-                            <th>Amount</th>
-                            </thead>
-                            <tbody>
-                            @yield('cartheader')
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="2">Total Price :</td>
-                                <td><input type="submit" value="confirm"></td>
-                            </tr>
-                            </tfoot>
-                        </table>--}}
-                    </div>
-                {{--</li>--}}
+
+                {{-- <li class="dropdown">--}}
+                <li class="dropdown">
+                    <a href="{{ route('cart') }}" class="dropbtn">Cart ( <?php
+                        $query = DB::table('cart')->count();
+                        echo $query
+                        ?> )</a>
+                </li>
+                {{--<div class="cart-content">
+                    <table class="tcart">
+                        <thead>
+                        <th>Article name</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                        </thead>
+                        <tbody>
+                        @yield('cartheader')
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="2">Total Price :</td>
+                            <td><input type="submit" value="confirm"></td>
+                        </tr>
+                        </tfoot>
+                    </table>--}}
+            </div>
+            {{--</li>--}}
             </div>
         @endguest
     </ul>

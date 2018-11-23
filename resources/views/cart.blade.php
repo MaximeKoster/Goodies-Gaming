@@ -35,8 +35,12 @@
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="2">Total Price :</td>
-            <td><input type="submit" value="confirm"></td>
+            <td colspan="2">Total Price :
+            <?php
+                    $totalprice = DB::table('cart')->sum('article_price');
+                    echo $totalprice;
+            ?>$ </td>
+            <td><input class="float-right" type="submit" value="Pay"></td>
         </tr>
     </table>
 @endsection
