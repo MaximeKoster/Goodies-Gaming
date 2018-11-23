@@ -46,7 +46,7 @@ Route::group(['prefix' => 'admin'], function() {
 Route::get('/cart', 'CartController@display_cart')->name('cart');
 
 Route::group(['prefix' => 'cart'], function() {
-    Route::get('/updated', 'CartController@update_quantity')->name('update_quantity');
+    Route::post('/updated', 'CartController@update_quantity')->name('update_quantity');
     Route::post('/deleted', 'CartController@delete_cart')->name('delete_cart');
 
 });

@@ -15,12 +15,12 @@
         @foreach ($display_cart as $product)
             <tr id="admin-list">
                 <td>{{ $product->article_title}}</td>
-                <td>{{ $product->item_quantity }}</td>
+                <td>{{ $product->article_price }}$</td>
                 <form method="POST" action="{{ action('CartController@update_quantity') }}">
                     {{ csrf_field() }}
 
                     <input type="hidden" name="id" value="{{ $product->id }}" ;>
-                    <td><input type="number" min="1" name="update_quantity"></td>
+                    <td><input type="number" min="1" name="qty" value="{{ $product->item_quantity }}"></td>
                     <td><input type="submit" class="bouton" value="✔"></td>
                 </form>
 

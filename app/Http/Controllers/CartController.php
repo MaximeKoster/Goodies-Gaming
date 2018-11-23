@@ -38,11 +38,14 @@ class CartController extends Controller
 
     public function update_quantity(Request $key)
     {
-        $product = cart::find($key->get('id'));
+        $product = Cart::find($key->get('id'));
 
-        if ($key->get('update_quantity') != NULL) {
-            $product->title = $key->get('update_quantity');
+        if ($key->get('qty') != NULL) {
+            $product->item_quantity = $key->get('qty');
         }
+
+        $product->save();
+        return redirect()->back();
     }
 
     public function delete_cart(Request $key)
