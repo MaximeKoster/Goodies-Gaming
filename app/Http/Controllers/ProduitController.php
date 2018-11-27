@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Catalogue;
+use App\Models\Catalogue;
 use DemeterChain\C;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +16,7 @@ class ProduitController extends Controller
 
     public function display($id)
     {
-        $display = DB::select("SELECT * FROM catalogue WHERE id = $id");
+        $display = Catalogue::where('id', $id)->get();
         return view('produit', ['display' => $display]);
     }
 }

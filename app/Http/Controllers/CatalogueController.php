@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class CatalogueController extends Controller
 
     public function display()
     {
-        $display = DB::select('select * from catalogue');
+        $display = Catalogue::all();
         return view('catalogue', ['display' => $display]);
     }
 }

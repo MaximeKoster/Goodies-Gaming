@@ -34,8 +34,8 @@
     <!-- Left Side Of Navbar -->
     <ul>
         <div id="header-searchbar">
-            <a id="header-click-logo" href="{{ url('/') }}">
-                <img src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782"
+            <a   id="header-click-logo" href="{{ url('/') }}">
+                <img width="50px" height="50px " src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782"
                      id="headerlogo">
             </a>
             <form action="" class="formulaire">
@@ -65,7 +65,7 @@
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">{{ Auth::user()->name }}</a>
                     <div class="dropdown-content">
-                        <a href="#">My Profile</a>
+                        <a href="{{ route('myprofile') }}">My Profile</a>
                         <a href="#">History</a>
                         @if(Auth::user()->permissions == "admin")
                             <a href="{{ route('admin') }}">Admin</a>
@@ -91,7 +91,7 @@
                 {{-- <li class="dropdown">--}}
                 <li class="dropdown">
                     <a href="{{ route('cart') }}" class="dropbtn">Cart ( <?php
-                        $query = DB::table('cart')->count();
+                        $query = \App\Models\Cart::where('user_id', Auth::user()->id)->count();
                         echo $query
                         ?> )</a>
                 </li>

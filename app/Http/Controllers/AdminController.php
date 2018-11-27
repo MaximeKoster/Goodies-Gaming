@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $products = DB::select('select * from catalogue');
+        $products = Catalogue::all();
         return view('admin', ['products' => $products]);
     }
 
@@ -39,7 +39,7 @@ class AdminController extends Controller
 
     public function delete_id(Request $key)
     {
-        catalogue::select('select * from catalogue')->where('id', '=', $key->get('id'))->delete();
+        Catalogue::where('id', '=', $key->get('id'))->delete();
         return redirect()->back();
 
     }
@@ -47,7 +47,7 @@ class AdminController extends Controller
     public function update_id(Request $key)
     {
 
-        $product = Catalogue::find($key->get('id'));
+        $product = Catalogue::find($key->get('id')) ;
 
 
         if($key->get('update_title') != NULL) {

@@ -50,6 +50,9 @@ Route::group(['prefix' => 'cart'], function() {
     Route::post('/deleted', 'CartController@delete_cart')->name('delete_cart');
 
 });
+
+Route::get('/profile', 'MyProfileController@index')->name('myprofile');
+
 Route::post('/catalogue', 'CartController@create_cart')->name('create_cart');
 
 Route::get('/catalogue', 'CatalogueController@display')->name('catalogue');

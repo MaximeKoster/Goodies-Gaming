@@ -25,10 +25,10 @@
                 </form>
 
                 <form method="POST" action="{{action('CartController@delete_cart')}}">
-                {{ csrf_field() }}
+                    {{ csrf_field() }}
 
-                <input type="hidden" name="id" value="{{ $product->id }}">
-                <td><input class="bouton" type="submit" value="🗙"/></td>
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                    <td><input class="bouton" type="submit" value="🗙"/></td>
                 </form>
             </tr>
         @endforeach
@@ -36,10 +36,11 @@
         <tfoot>
         <tr>
             <td colspan="2">Total Price :
-            <?php
-                    $totalprice = DB::table('cart')->sum('article_price');
-                    echo $totalprice;
-            ?>$ </td>
+                <?php
+                $totalprice = \App\Models\Cart::where('user_id', Auth::user()->id)->sum('article_price');
+                echo $totalprice;
+                ?>$
+            </td>
             <td><input class="float-right" type="submit" value="Pay"></td>
         </tr>
     </table>
