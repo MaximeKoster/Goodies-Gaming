@@ -64,5 +64,6 @@ Route::get('/produit/{id}', 'ProduitController@display')->name('produit');
 Route::get('/home', 'CatalogueController@display')->name('home');
 
 Route::get('/', 'CatalogueController@display')->name('home');
+Route::get('/cart', 'CatalogueController@display_cart')->name('cart');
 /*Route::get('/', 'CartController@display_cart')->name('display_cart');*/
 

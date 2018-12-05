@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
 
 
 class CartController extends Controller
@@ -19,11 +20,6 @@ class CartController extends Controller
 
     public function create_cart(Request $key)
     {
-/*
-        if (DB::table('cart')->whereExists('user_id', Auth::user()->id and 'article_title', $key->get('product_id')) != null)
-        {
-            (DB::table('cart')->where('user_id', Auth::user()->id and 'article_title', $key->get('product_id')))->insert();
-        }*/
         $cart = new Cart();
 
         $cart->user_id = $key->get('user_id');
@@ -41,7 +37,7 @@ class CartController extends Controller
 
     public function display_cart()
     {
-        $display_cart = Cart::where('user_id', Auth::user()->id)->get();
+        $display_cart = DB::table('cart')->where('user_id', Auth::user()->id)->get();
         return view('cart',['display_cart' => $display_cart]);
     }
 
@@ -59,8 +55,9 @@ class CartController extends Controller
 
     public function delete_cart(Request $key)
     {
-        Cart::where('id', '=', $key->get('id'))->delete();
+        cart::select('select * from cart')->where('id', '=', $key->get('id'))->delete();
         return redirect()->back();
 
     }
 }
+

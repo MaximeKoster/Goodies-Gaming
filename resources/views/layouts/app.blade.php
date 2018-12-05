@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -10,9 +11,18 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/layouts.js') }}" defer></script>
-
+    <script src="{{ asset('js/catalogue.js') }}" defer></script>
+    <script src="{{ asset('js/cart.js') }}" defer></script>
+    <script>$(function () {
+            footer();
+            total_cart();
+        })</script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -34,8 +44,9 @@
     <!-- Left Side Of Navbar -->
     <ul>
         <div id="header-searchbar">
-            <a   id="header-click-logo" href="{{ url('/') }}">
-                <img width="50px" height="50px " src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782"
+            <a id="header-click-logo" href="{{ url('/') }}">
+                <img width="50px" height="50px "
+                     src="https://tbncdn.freelogodesign.org/fbcb4c09-6aa2-45e2-ad16-a98d67933301.png?1540981269782"
                      id="headerlogo">
             </a>
             <form action="" class="formulaire">
@@ -90,10 +101,8 @@
 
                 {{-- <li class="dropdown">--}}
                 <li class="dropdown">
-                    <a href="{{ route('cart') }}" class="dropbtn">Cart ( <?php
-                        $query = \App\Models\Cart::where('user_id', Auth::user()->id)->count();
-                        echo $query
-                        ?> )</a>
+                    <a href="{{ route('cart') }}" class="dropbtn">Cart ( <span id="dropdown-cart-value"></span> )
+                    </a>
                 </li>
                 {{--<div class="cart-content">
                     <table class="tcart">

@@ -18,4 +18,16 @@ class CatalogueController extends Controller
         $display = Catalogue::all();
         return view('catalogue', ['display' => $display]);
     }
+
+    public function display_cart()
+    {
+        $display_cart = Catalogue::all();
+        return view('cart', ['display_cart' => $display_cart]);
+    }
+
+    public function display_catalogue(Request $id)
+    {
+        $title = Catalogue::where('id', $id->get('requestid'))->value('title');
+        return view('cart', ['title' => $title]);
+    }
 }
