@@ -53,7 +53,7 @@ Route::group(['prefix' => 'cart'], function() {
 
 Route::get('/profile', 'MyProfileController@index')->name('myprofile');
 
-Route::post('/catalogue', 'CartController@create_cart')->name('create_cart');
+Route::post('/cart', 'CartController@create_cart')->name('create_cart');
 
 Route::get('/catalogue', 'CatalogueController@display')->name('catalogue');
 /*Route::get('/catalogue', 'CartController@display_cart')->name('display_cart');*/

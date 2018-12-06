@@ -19,7 +19,7 @@
                 </button>
 
                 <form method="POST" action="{{ action('CartController@create_cart') }}">
-                    {{ csrf_field() }}
+                        {{ csrf_field() }}
 
                     <input type="hidden" name="pagenameid" value="1">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
