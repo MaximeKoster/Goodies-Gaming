@@ -1,17 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @guest
-        <?php
-        $route_log = route('login');
-        header("location: $route_log");
-        exit;
-        ?>
-    @endguest
     @foreach($display as $product)
+
+
         <h3 class="catalogue-head">
             <div class="cath3">
-                <img class="catimg" src="{{$product->url_image}}"/>
+                <img class="catimg" src={{asset('storage/'.$product->image)}} />
                 <p>{{$product->title}}</p>
                 <p>Price : {{$product-> price}}$</p>
                 <p> Only {{$product->quantity}} left ! Grab yours quickly !</p>
@@ -24,7 +19,8 @@
                     <input type="hidden" name="pagenameid" value="1">
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     <input type="hidden" name="product_id" value="{{ $product->title }}">
-                    <input type="hidden" name="price" value="{{ $product->price }}">
+                    <input type="hidden" name="product_price" value="{{ $product->price }}">
+                    <input type="hidden" name="qty" value="1">
                     <button class="catalogue-button" onclick="location.href={{ route('cart') }};" type="submit">Achat
                         Directe
                     </button>

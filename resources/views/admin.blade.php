@@ -10,7 +10,7 @@
             ?>
         @else
             <div id="product-creator">
-                <form method="POST" action="{{action('AdminController@store')}}" id="addprod">
+                <form enctype="multipart/form-data" method="POST" action="{{action('AdminController@store')}}" id="addprod">
                     {{csrf_field()}}
                     <h1>Product Creator</h1>
 
@@ -31,8 +31,8 @@
                         <input type="number" name="quantity" placeholder="Write here ...">
                     </div>
                     <div>
-                        <label for="prodimage">Enter the url of the image for the product : </label>
-                        <textarea name="prodimage" placeholder="Write here ..."></textarea>
+                        <label for="image" style="margin-bottom: 10px">Select an image from your computer :</label>
+                        <input type="file" name="image" accept="image/png, image/jpeg">
                     </div>
                     <div>
                         <label for="prodsub">Click here to upload the new product : </label>
@@ -67,7 +67,75 @@
                     </div>
                 </form>
             </div>
+            <div>
+                <p class="user-count" >Number of users</p>
+                <p class="command-count">Number of commands</p>
+                <p class="big-command">Biggest command</p>
+            </div>
+            <button class="admin-refresh">Refresh</button>
+            <script>
+                function showusers () {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
 
+                        type: "POST",
+                        url: "http://127.0.0.1:8000/admin/refreshedusers",
+
+                        success: function (response) {
+                            $('.user-count').text("Number of users : " + response);
+
+                        }
+                    })
+                }
+
+                function commands () {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+
+                        type: "POST",
+                        url: "http://127.0.0.1:8000/admin/commands",
+
+                        success: function (response) {
+                            $('.command-count').text("Number of commands : " + response);
+
+                        }
+                    })
+                }
+
+                function big_command () {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+
+                        type: "POST",
+                        url: "http://127.0.0.1:8000/admin/bigcommand",
+
+                        success: function (response) {
+                            $('.big-command').text("Biggest command: " + response);
+
+                        }
+                    })
+                }
+
+                $(document).ready(function () {
+                    showusers();
+                    commands();
+                    big_command();
+                });
+
+                $('.admin-refresh').click(function () {
+                    showusers();
+                    commands();
+                    big_command();
+                })
+
+
+            </script>
             <table class="tadd">
                 <thead>
                 <th>Image Url</th>
@@ -84,7 +152,7 @@
                         <form method="POST" action="{{ action('AdminController@update_id') }}">
                             {{ csrf_field() }}
 
-                            <input type="hidden" name="id" value="{{ $product->id }}";>
+                            <input type="hidden" name="id" value="{{ $product->id }}" ;>
                             <td><input type="text" name="update_img" value="{{ $product->url_image }}"></td>
                             <td><input type="text" name="update_title" value="{{ $product->title }}"></td>
                             <td><input type="number" name="update_price" value="{{ $product->price  }}"></td>

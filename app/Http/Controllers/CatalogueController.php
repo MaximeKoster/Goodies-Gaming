@@ -39,6 +39,11 @@ class CatalogueController extends Controller
         return view('cart', ['display_cart' => $display_cart]);
     }
 
+    public function display_mail()
+    {
+        return view('mail');
+    }
+
     public function display_catalogue(Request $id)
     {
         $title = Catalogue::where('id', $id->get('requestid'))->value('title');

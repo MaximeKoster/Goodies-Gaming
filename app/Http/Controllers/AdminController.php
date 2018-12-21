@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Catalogue;
 use App\Models\Category;
-use DemeterChain\C;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\File\MimeType;
+
 
 class AdminController extends Controller
 {
+
+
     public function index()
     {
         $products = Catalogue::all();
@@ -18,12 +24,16 @@ class AdminController extends Controller
 
     public function store(Request $key)
     {
+        $name = $key->file('image')->getClientOriginalName();
+        $key->file('image')->storeAs('public', $name);
+        $key->file('image')->store('public');
+
         $product = new Catalogue();
         $product->title = $key->get('prodname');
         $product->price = $key->get('prodprice');
         $product->description = $key->get('desc');
         $product->quantity = $key->get('quantity');
-        $product->url_image = $key->get('prodimage');
+        $product->image =  $name;
         $product->save();
         return redirect()->back();
     }
@@ -44,29 +54,73 @@ class AdminController extends Controller
 
     }
 
+
     public function update_id(Request $key)
     {
+        $product = Catalogue::find($key->get('id'));
 
-        $product = Catalogue::find($key->get('id')) ;
 
-
-        if($key->get('update_title') != NULL) {
+        if ($key->get('update_title') != NULL) {
             $product->title = $key->get('update_title');
         }
-        if($key->get('update_price') != NULL) {
+        if ($key->get('update_price') != NULL) {
             $product->price = $key->get('update_price');
         }
-        if($key->get('update_desc') != NULL) {
+        if ($key->get('update_desc') != NULL) {
             $product->description = $key->get('update_desc');
         }
-        if($key->get('update_quantity') != NULL) {
+        if ($key->get('update_quantity') != NULL) {
             $product->quantity = $key->get('update_quantity');
         }
-        if($key->get('update_img') != NULL) {
+        if ($key->get('update_img') != NULL) {
             $product->url_image = $key->get('update_img');
         }
 
         $product->save();
         return redirect()->back();
     }
+
+    public function commands()
+    {
+        $var = count(Cart::all());
+        return $var;
+    }
+
+    public function big_command()
+    {
+        $var = count(Cart::all());
+        $biguser = 0;
+
+        for ($i = 0; $i < $var; $i++) {
+            $cartprice = Cart::pluck('article_price')[$i];
+            $cartqty = Cart::pluck('item_quantity')[$i];
+            $total = ($cartprice * $cartqty);
+            $user = Cart::pluck('user_id')[$i];
+
+            $big = 0;
+
+            if ( $i == 0 ){
+                $big = $total;
+                $biguser = $user;
+            } else if ( $total > $big ){
+                $big = $total;
+                $biguser = $user;
+
+            }
+
+        }
+
+        $biguser = User::where('id', '=', $biguser)->value('name');
+        $tostring = ($big . "$ by " .$biguser);
+
+        return $tostring;
+
+    }
+
+    public function show_users()
+    {
+        $var = count(User::all());
+        return $var;
+    }
+
 }

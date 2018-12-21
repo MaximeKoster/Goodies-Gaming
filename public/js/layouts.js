@@ -15,36 +15,46 @@ function total_cart() {
 
 }
 
-/*
-$(document).ready(  function checkCookie() {
-        if(getCookie("GGcookie") === null) {
-            var c = confirm("En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de [Cookies ou autres traceurs] pour vous proposer [Par exemple, des publicités ciblées adaptés à vos centres d’intérêts] et [Par exemple, réaliser des statistiques de visites].");
-            if (c === true)
-                setCookie("GGCookie", 2, 1);
-        }
-        else
-            return null;
-    });
-
-function setCookie(cname,cvalue,exdays) {
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-    var expires = "expires=" + d.toGMTString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
+function getCookie(name) {
+    var dc = document.cookie;
+    var prefix = name + "=";
+    var begin = dc.indexOf("; " + prefix);
+    if (begin == -1) {
+        begin = dc.indexOf(prefix);
+        if (begin != 0) return null;
+    }
+    else
+    {
+        begin += 2;
+        var end = document.cookie.indexOf(";", begin);
+        if (end == -1) {
+            end = dc.length;
         }
     }
-    return null;
-}*/
+    return decodeURI(dc.substring(begin + prefix.length, end));
+}
+
+$(document).ready(function () {
+    var myCookie = getCookie("rgpd");
+
+    if (myCookie == null) {
+        document.cookie = "rgpd"
+    } else if (getCookie("rgpd=true") != null ) {
+        $('.sethidden').attr("style","display:none")
+    } else if (getCookie("rgpd=true") != null ) {
+        $('.sethidden').attr("style","display:none")
+    } else {
+        if ( getCookie("rgpd=false") != null){
+            $('.sethidden').attr("style","display:none")
+        } else {
+            $('.submit-button-cookie-true').click(function () {
+                document.cookie = "rgpd=true"
+                $('.sethidden').attr("style","display:none");
+            });
+            $('.submit-button-cookie-false').click(function () {
+                document.cookie = "rgpd=false"
+                $('.sethidden').attr("style", "display:none")
+            });
+        }
+    }
+});

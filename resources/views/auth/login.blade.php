@@ -36,7 +36,7 @@
             </a><br>
 
             <a class="btn btn-link noaccount" href="{{url("/register")}}">
-                No account ? Register here.
+                Demander l'accès au compte admin.
             </a><br>
         </form>
     </div>

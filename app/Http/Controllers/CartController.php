@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Cart;
+use App\Mail\ShopOrder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface;
@@ -16,34 +16,26 @@ class CartController extends Controller
     public function index()
     {
         return view('cart');
-    }//
+    }
 
     public function create_cart(Request $key)
     {
-        $cart = new Cart();
+        for ($i = 0; $i < count($key->get('product_id')); $i++) {
+                $cart = new Cart();
 
-        $cart->user_id = $key->get('user_id');
-        $cart->article_title = $key->get('product_id');
-        $cart->article_price = $key->get('price');
-        $cart->item_quantity = 1;
-        $cart->save();
-
-/*
-        if ($key->get('pagenameid') == 1) {
-            return redirect()->route('cart');
-        } else if ( $key->get('pagenameid') == 1) {
-            return;
-        } else {
-
-            return redirect()->back();
-        }*/
+                $cart->email = $key->get('email');
+                $cart->article_title = ($key->get('product_id')[$i]);
+                $cart->article_price = ($key->get('product_price')[$i]);
+                $cart->item_quantity = ($key->get('qty')[$i]);
+                $cart->save();
+        }
     }
 
-    public function display_cart()
+   /* public function display_cart()
     {
-        $display_cart = DB::table('cart')->where('user_id', Auth::user()->id)->get();
-        return view('cart',['display_cart' => $display_cart]);
-    }
+        $display_cart = Cart::where('user_id', Auth::user()->id)->get();
+        return view('cart', ['display_cart' => $display_cart]);
+    }*/
 
     public function update_quantity(Request $key)
     {
@@ -62,6 +54,18 @@ class CartController extends Controller
         cart::select('select * from cart')->where('id', '=', $key->get('id'))->delete();
         return redirect()->back();
 
+    }
+
+    public function send_mail(Request $key)
+    {
+        for ($i = 0; $i < count($key->get('product_id')); $i++) {
+            $mail = $key->get('email');
+            $article_title[$i] = ($key->get('product_id')[$i]);
+            $article_price[$i] = ($key->get('product_price')[$i]);
+            $item_quantity[$i] = ($key->get('qty')[$i]);
+        }
+        Mail::to('8a088cb72a-0e528a@inbox.mailtrap.io')->send(new ShopOrder($key));
+        return 'isgood';
     }
 }
 

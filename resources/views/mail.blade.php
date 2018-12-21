@@ -1,0 +1,1 @@
+<p>{{$order->get('email')}}</p>

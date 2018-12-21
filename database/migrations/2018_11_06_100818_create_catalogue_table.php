@@ -20,7 +20,7 @@ class CreateCatalogueTable extends Migration
             $table->text('description');
             $table->integer('price');
             $table->integer('quantity');
-            $table->string('url_image');
+            $table->string('image');
             $table->timestamps();
         });
     }

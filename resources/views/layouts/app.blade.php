@@ -23,6 +23,7 @@
             footer();
             total_cart();
         })</script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
@@ -40,6 +41,11 @@
 
 </head>
 <body>
+<div style="display: none" class="sethidden">
+    <p>Accept cookies</p>
+    <button class="submit-button-cookie-true" type="submit">Yes</button>
+    <button class="submit-button-cookie-false" type="submit">No</button>
+</div>
 <nav>
     <!-- Left Side Of Navbar -->
     <ul>
@@ -57,27 +63,11 @@
 
         <!-- Right Side Of Navbar -->
         <!-- Authentication Links -->
-        @guest
+        @auth
             <div class="listit">
-                <li class="dropdown">
-                    <a class="guestbutton" href="{{ route('login') }}">{{ __('Login') }}</a>
-                </li>
-                <li class="dropdown">
-                    @if (Route::has('register'))
-                        <a class="guestbutton" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    @endif
-                </li>
-            </div>
-        @else
-            <div class="listit">
-                <li class="dropdown">
-                    <a href="{{ route('catalogue') }}" class="dropbtn">Catalogue</a>
-                </li>
                 <li class="dropdown">
                     <a href="javascript:void(0)" class="dropbtn">{{ Auth::user()->name }}</a>
                     <div class="dropdown-content">
-                        <a href="{{ route('myprofile') }}">My Profile</a>
-                        <a href="#">History</a>
                         @if(Auth::user()->permissions == "admin")
                             <a href="{{ route('admin') }}">Admin</a>
                         @endif
@@ -89,42 +79,38 @@
                         </form>
                     </div>
                 </li>
+            </div>
+            {{--<div class="listit">
                 <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Help</a>
-                    <div class="dropdown-content">
-                        <a href="#">Information</a>
-                        <a href="#">Contact</a>
-                        <a href="#">QnA</a>
-                        <a href="#">S.A.V</a>
-                    </div>
+                    <a class="guestbutton" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
+                <li class="dropdown">
+                    @if (Route::has('register'))
+                        <a class="guestbutton" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    @endif
+                </li>
+            </div>--}}
+        @endauth
+        <div class="listit">
+            <li class="dropdown">
+                <a href="{{ route('catalogue') }}" class="dropbtn">Catalogue</a>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Help</a>
+                <div class="dropdown-content">
+                    <a href="#">Information</a>
+                    <a href="#">Contact</a>
+                    <a href="#">QnA</a>
+                    <a href="#">S.A.V</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="{{ route('cart') }}" class="dropbtn">Cart ( <span id="dropdown-cart-value"></span> )
+                </a>
+            </li>
+        </div>
 
-                {{-- <li class="dropdown">--}}
-                <li class="dropdown">
-                    <a href="{{ route('cart') }}" class="dropbtn">Cart ( <span id="dropdown-cart-value"></span> )
-                    </a>
-                </li>
-                {{--<div class="cart-content">
-                    <table class="tcart">
-                        <thead>
-                        <th>Article name</th>
-                        <th>Price</th>
-                        <th>Amount</th>
-                        </thead>
-                        <tbody>
-                        @yield('cartheader')
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td colspan="2">Total Price :</td>
-                            <td><input type="submit" value="confirm"></td>
-                        </tr>
-                        </tfoot>
-                    </table>--}}
-            </div>
-            {{--</li>--}}
-            </div>
-        @endguest
+
     </ul>
 </nav>
 
