@@ -6,7 +6,7 @@
 
         <h3 class="catalogue-head">
             <div class="cath3">
-                <img class="catimg" src={{asset('storage/'.$product->image)}} />
+                <img class="catimg" src={{asset($product->url_image)}} />
                 <p>{{$product->title}}</p>
                 <p>Price : {{$product-> price}}$</p>
                 <p> Only {{$product->quantity}} left ! Grab yours quickly !</p>
