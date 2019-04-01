@@ -21,11 +21,8 @@
                     <input type="hidden" name="product_id" value="{{ $product->title }}">
                     <input type="hidden" name="product_price" value="{{ $product->price }}">
                     <input type="hidden" name="qty" value="1">
-                    <button class="catalogue-button" onclick="location.href={{ route('cart') }};" type="submit">Achat
-                        Directe
-                    </button>
                 </form>
-                <button class="catalogue-button" type="submit" onclick="stock_id_session({{$product->id}}); total_cart()">TEST
+                <button class="catalogue-button" type="submit" onclick="stock_id_session({{$product->id}}); total_cart()">Ajouter au panier
                 </button>
             </div>
         </h3>

@@ -31,8 +31,8 @@
                         <input type="number" name="quantity" placeholder="Write here ...">
                     </div>
                     <div>
-                        <label for="image" style="margin-bottom: 10px">Select an image from your computer :</label>
-                        <input type="file" name="image" accept="image/png, image/jpeg">
+                        <label for="image">Enter the image url : </label>
+                        <textarea name="image" placeholder="Write here ..."></textarea>
                     </div>
                     <div>
                         <label for="prodsub">Click here to upload the new product : </label>
@@ -42,7 +42,6 @@
             </div>
 
             <div id="category-creator">
-
                 <form method="POST" action="{{action('AdminController@store_category')}}" id="addprod">
                     {{csrf_field()}}
                     <h1>Category creator</h1>

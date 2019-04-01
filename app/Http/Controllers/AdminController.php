@@ -24,16 +24,12 @@ class AdminController extends Controller
 
     public function store(Request $key)
     {
-        $name = $key->file('image')->getClientOriginalName();
-        $key->file('image')->storeAs('public', $name);
-        $key->file('image')->store('public');
-
         $product = new Catalogue();
         $product->title = $key->get('prodname');
         $product->price = $key->get('prodprice');
         $product->description = $key->get('desc');
         $product->quantity = $key->get('quantity');
-        $product->image =  $name;
+        $product->url_image = $key->get('image');
         $product->save();
         return redirect()->back();
     }
